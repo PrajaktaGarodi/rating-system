@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('contact');
             $table->string('email');
             $table->text('image');
-            $table->tinyInteger('role');
             $table->string('food_type');
             $table->string('open_time');
             $table->string('close_time');
-            $table->text('menu_img');
+            
+            
 
             $table->timestamps();
         });

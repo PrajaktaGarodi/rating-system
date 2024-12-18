@@ -9,10 +9,10 @@
 
 <div class="row">
     <div class="col-md-12 p-4">
-        <form method="POST">
+        <form action="{{ route('court.store')}}" enctype="multipart/form-data" method="POST">
             <div class="row">
                 <div class="col-md-6">
-
+                    <input type="number" name="vendor_id" value="{{ Auth::user()->id }}" class="d-none">
                     @csrf
                     <div class="form-group mt-3">
                         <label for="name" class="form-label">Court Name</label>
@@ -35,10 +35,6 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label for="contact" class="form-label">Image</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
                 </div>
 
                 <div class="col-md-6">
@@ -51,27 +47,27 @@
 
                <div class="form-group mt-3">
                         <label for="contact" class="form-label">Open Time</label>
-                        <input type="date" class="form-control" id="open_time" name="open_time" required>
+                        <input type="time" class="form-control" id="open_time" name="open_time" required>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="contact" class="form-label">Close Time</label>
-                        <input type="date" class="form-control" id="close_time" name="close_time" required>
+                        <input type="time" class="form-control" id="close_time" name="close_time" required>
                     </div>
 
 
                     <div class="form-group mt-3">
-                        <label for="contact" class="form-label">Menu Image</label>
-                        <input type="file" class="form-control" id="menu_image" name="menu_image" required>
+                        <label for="contact" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
-                </div>
-
-                <div class="col-md-12 d-flex justify-content-center mt-3 mb-2" >
+                   
+               
+            </div>
+            <div class="col-md-12 d-flex justify-content-center mt-3 mb-2" >
                     <button class="btn btn-primary ">
                         Submit
                     </button>
                 </div>
-            </div>
         </form>
     </div>
 </div>

@@ -46,4 +46,19 @@
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+        </div>
+    </div>
+</div>
 @endsection
