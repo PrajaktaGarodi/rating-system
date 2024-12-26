@@ -7,13 +7,13 @@
                 Dashboard
             </a>
 
-            <a class="nav-link" href="{{ url('admin/dashboard') }}">
+            <a class="nav-link" href="{{ route('admin.vendor-list') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 View Vendor
             </a>
 
 
-            <a class="nav-link" href="{{ url('admin/dashboard') }}">
+            <a class="nav-link" href="{{ route('admin.user-list') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     View User
             </a>

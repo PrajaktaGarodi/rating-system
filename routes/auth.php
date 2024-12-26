@@ -57,3 +57,16 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+
+Route::get( 'admin/user-list' ,[RegisteredUserController::class, 'list'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.user-list');
+
+Route::get( 'admin/vendor-list' ,[RegisteredUserController::class, 'vendorlist'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.vendor-list');
+
+// Route::get('admin/user-edit/{id}',[RegisteredUserController::class, 'edit'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.user-edit');
+
+Route::get('admin/user-delete/{id}',[RegisteredUserController::class, 'userdelete'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.user-delete');
+
+Route::get('admin/vendor-delete/{id}',[RegisteredUserController::class, 'vendordelete'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.vendor-delete');
+
+

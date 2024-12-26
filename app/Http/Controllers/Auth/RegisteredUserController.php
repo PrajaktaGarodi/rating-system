@@ -14,12 +14,44 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+
+
+    public function list()
+    {
+        $data = User::where( 'role',2)->get();
+        return view('admin.user-list', compact('data'));       
+    }
+
+    public function vendorlist()
+    {
+        $data = User::where( 'role',1)->get();
+        return view('admin.vendor-list', compact('data'));       
+    }
+
+
+
     /**
      * Display the registration view.
      */
     public function create(): View
     {
         return view('auth.register');
+    }
+
+
+
+    public function userdelete($id){
+        User::find($id)->delete();
+        return redirect()->route('admin.user-list')->with('success','User deleted successfully');
+        // return "delete";
+
+    }
+
+    public function vendordelete($id){
+        User::find($id)->delete();
+        return redirect()->route('admin.vendor-list')->with('success','Vendor deleted successfully');
+        // return "delete";
+
     }
 
     /**

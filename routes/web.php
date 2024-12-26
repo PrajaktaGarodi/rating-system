@@ -46,3 +46,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('users/show-court',[CourtController::class,'showcourt'])->middleware(['auth', 'verified','rolemanager:user'])->name('users.show-court');   
