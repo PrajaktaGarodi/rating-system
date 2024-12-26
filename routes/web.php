@@ -10,26 +10,27 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
 
 Route::get('/admin/dashboard', function () {
-    return view('admin');
+    return view('admin.admin');
 })->middleware(['auth', 'verified','rolemanager:admin'])->name('admin');
 
 
-Route::get('/vendor/dashboard', function () {
-    return view('vendor');
-})->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
+// Route::get('/vendor/dashboard', function () {
+//     return view('vendor.vendor');
+// })->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
 
 
 Route::get('/register-court', function () {
-    return view('register-court');
+    return view('vendor.register-court');
 })->name('register-court');
 
 
 Route::get('vendor', [CourtController::class, 'create'])->name('court.create');
-Route::post('court-register', [CourtController::class, 'store'])->name('court.store');
+Route::post('vendor.court-register', [CourtController::class, 'store'])->name('court.store');
+Route::get('vendor/dashboard',[CourtController::class, 'list'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
 
 
 

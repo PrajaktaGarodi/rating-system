@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Court;
+
 class CourtController extends Controller
 {
-    // public function list()
-    // {
-    //     $courts = Court::get();
-    //     return view('courts.index', compact('courts'));
-    // }
+    public function list()
+    {
+       
+        $data = Court::get();        
+        // return "court";
+        return view('vendor.vendor', compact('data'));
+    }
 
     public function create(){
         return view('register-court');
