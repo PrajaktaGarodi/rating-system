@@ -39,4 +39,11 @@ class CourtController extends Controller
         court::create($request->all());
         return redirect()->route('vendor')->with('success', 'Court created successfully.');
     }
+
+    public function showcourt (){
+       
+        $court = Court::get();        
+        return view('user.show-court', compact('court'));
+        
+    }
 }
