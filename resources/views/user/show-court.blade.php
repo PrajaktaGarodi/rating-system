@@ -9,58 +9,25 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-around">
 
-        @foreach 
+        @foreach ($court as  $value)
             <div class="col-md-4">
                 <div class="card">
                     <h2 class="card-header">
-                        User Profile
+                        {{$value->court_name}}
                     </h2>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBm5dOkjrPbRakjg_MHs0dmkoWnRzViGgqg&s"
-                        class="card-img-top p-4" alt="...">
+                    <img src="{{ asset('storage/images/' . $value->image) }}" alt="Image">
+
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">{{$value->address}}</h5>
+                        <p class="card-text">Food Type : {{$value->food_type}}</p>
+                        <a href="{{route('user.court_details',$value->id)}}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- <div class="col-md-4">
-                <div class="card">
-                    <h2 class="card-header">
-                        User Profile
-                    </h2>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBm5dOkjrPbRakjg_MHs0dmkoWnRzViGgqg&s"
-                        class="card-img-top p-4" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h2 class="card-header">
-                        User Profile
-                    </h2>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBm5dOkjrPbRakjg_MHs0dmkoWnRzViGgqg&s"
-                        class="card-img-top p-4 rouneded rounded-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div> -->
+            @endforeach
+           
         </div>
 
     </div>

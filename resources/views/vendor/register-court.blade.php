@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group mt-3">
                         <label for="name" class="form-label">Court Name</label>
-                        <input type="text" class="form-control" id="name" name="court_name" required>
+                        <input type="text" class="form-control" id="court_name" name="court_name" required>
                     </div>
 
                     <div class="form-group mt-3">

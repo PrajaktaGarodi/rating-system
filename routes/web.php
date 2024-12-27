@@ -48,3 +48,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('users/show-court',[CourtController::class,'showcourt'])->middleware(['auth', 'verified','rolemanager:user'])->name('users.show-court');   
+
+
+Route::get('users/court_details/{id}',[CourtController::class, 'showdetails'])->middleware(['auth', 'verified','rolemanager:user'])->name('user.court_details');   
