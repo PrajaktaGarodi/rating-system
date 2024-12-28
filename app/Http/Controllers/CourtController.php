@@ -107,4 +107,12 @@ class CourtController extends Controller
         $court = Court::find($id);
         return view('user.court-details', compact('court'));
     }
+
+
+    public function vendor_courts()
+    {
+        $vendor_id = auth()->user()->id;
+        $courts = Court::where('vendor_id', $vendor_id)->get();
+        return view('vendor.view-food-court', compact('courts'));
+    }
 }

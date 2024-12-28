@@ -2,10 +2,8 @@
 
 @section('content')
 
-<h1 class="mt-4">User Dashboard</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active"> Dashboard</li>
-</ol>
+<h1 class="mt-4 mb-5">Food Court</h1>
+
 
 <div class="row">
     <div class="col-md-12">

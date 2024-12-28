@@ -101,20 +101,10 @@ $closeTime = date('h:i A', strtotime($court->close_time));
                     </div>
 
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Your Email ID :</label>
-                            <input type="text" name="email" id="" class="form-control">
-                        </div>
-                    </div>
 
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Your Address:</label>
-                            <input type="text" name="address" id="" class="form-control">
-                        </div>
-                    </div>
+
+
 
 
 
@@ -133,11 +123,12 @@ $closeTime = date('h:i A', strtotime($court->close_time));
                             <textarea name="descriptions" id="" class="form-control"></textarea>
                         </div>
                     </div>
-
+                   
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

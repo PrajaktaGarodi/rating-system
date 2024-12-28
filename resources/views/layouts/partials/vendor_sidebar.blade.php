@@ -11,6 +11,11 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Register Food Court
             </a>
+            
+            <a class="nav-link" href="{{ route('vendor.view-food-court') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                View Food Court
+            </a>
 
             <a class="nav-link" href="{{ url('vendor/dashboard') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
