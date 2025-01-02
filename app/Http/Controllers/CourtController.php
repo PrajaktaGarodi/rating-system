@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Court;
+use App\Models\User;
 
 class CourtController extends Controller
 {
@@ -102,8 +103,18 @@ class CourtController extends Controller
 
     }
 
+    //food court for admin
+    public function admin_courts()
+    {
+        $courts = Court::get();
+        $vendor = User::where('role', 1)->get(); 
+
+        return view('admin.food-court', compact('courts','vendor'));
+    }
+
 
     public function showdetails($id){
+        
         $court = Court::find($id);
         return view('user.court-details', compact('court'));
     }

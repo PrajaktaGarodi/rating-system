@@ -35,7 +35,7 @@ class RatingController extends Controller
         $court_data = Court::all();
         $user_data = user::all();
         
-        $ratings = Rating::where('user_id', $user_id)->where('created_at',now()->setTimeZone('Asia/Kolkata'))->get();
+        $ratings = Rating::where('user_id', $user_id)->whereDate('created_at', now()->setTimeZone('Asia/Kolkata'))->get();
 
         return view('user.dashboard', compact('ratings', 'court_data', 'user_data'));
     }
@@ -55,6 +55,14 @@ class RatingController extends Controller
         return view('admin.admin', compact('user', 'vendor', 'court', 'rating'));
 
         
+    }
+
+    public function admin_rating()
+    {
+        $ratings = Rating::all();
+        $court_data = Court::all();
+        $user_data = user::all();
+        return view('admin.rating', compact('ratings', 'court_data', 'user_data'));
     }
     
 }

@@ -77,3 +77,9 @@ Route::post('vendor/update-food-court/{id}',[CourtController::class,'update_food
 
 Route::post('user/rating',[RatingController::class,'store'])->middleware(['auth', 'verified','rolemanager:user'])->name('rating');
 
+
+//admin routes
+
+Route::get('admin/food-court',[CourtController::class,'admin_courts'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.food-court');
+
+Route::get('admin/rating',[RatingController::class,'admin_rating'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin.rating');

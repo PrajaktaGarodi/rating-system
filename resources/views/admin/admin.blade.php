@@ -16,7 +16,7 @@
                 <h3>{{$user }}</h3>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link" href="#">View Details</a>
+                <a class="small text-white stretched-link" href="{{route('admin.user-list')}}">View Details</a>
                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <h3>{{$vendor}}</h3>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link" href="#">View Details</a>
+                <a class="small text-white stretched-link"  href="{{route('admin.vendor-list')}}">View Details</a>
                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
             </div>
         </div>
