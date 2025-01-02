@@ -33,9 +33,19 @@
                 <tbody>
                     @foreach ( $ratings as $rating)
                     @php
-                    $foodcourt = 
+                    $foodcourt = $court_data->firstWhere('id', $rating->court_id);
+                    $vendor = $user_data->firstWhere('id', $rating->vendor_id);
+                    $user = $user_data->firstWhere('id', $rating->user_id);
                     @endphp
-                                      
+                    <tr>
+                        <td>{{$user->name}}</td>
+                        <td>{{$vendor->name}}</td>
+                        <td>{{$foodcourt->court_name}}</td>
+                        <td>{{$foodcourt->email}}</td>
+                        <td>{{$foodcourt->food_type}}</td>
+                        <td>{{$rating->descriptions}}</td>
+                        <td>{{$rating->rating}}</td>
+                    </tr>
                     @endforeach
                 <tbody>
                     
