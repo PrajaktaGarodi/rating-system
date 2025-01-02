@@ -115,4 +115,28 @@ class CourtController extends Controller
         $courts = Court::where('vendor_id', $vendor_id)->get();
         return view('vendor.view-food-court', compact('courts'));
     }
+
+
+    public function edit_food_courts($id)
+    {
+        $court = Court::find($id);
+        return view('vendor.food_court_edit', compact('court'));
+    }
+
+
+
+    public function update_food_courts(Request $request, $id)
+    {
+        $court = Court::find($id);
+        $court->court_name = $request->input('court_name');
+        $court->address = $request->input('address');
+        $court->contact = $request->input('contact');
+        $court->email = $request->input('email');
+        $court->food_type = $request->input('food_type');
+        $court->open_time = $request->input('open_time');
+        $court->close_time = $request->input('close_time');
+        $court->save();
+
+        return redirect()->route('vendor.view-food-court')->with('success', 'Court updated successfully.');
+    }
 }

@@ -10,7 +10,7 @@
         <div class="row d-flex justify-content-around">
 
         @foreach ($court as  $value)
-            <div class="col-md-4">
+            <div class="col-md-4 mt-4">
                 <div class="card">
                     <h2 class="card-header">
                         {{$value->court_name}}

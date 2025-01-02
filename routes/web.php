@@ -4,23 +4,30 @@ use App\Http\Controllers\CourtController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Court;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RatingController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.admin');
-})->middleware(['auth', 'verified','rolemanager:admin'])->name('admin');
+Route::get('user/dashboard',[RatingController::class, 'show'])->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
+
+// Route::get('/admin/dashboard', function () {
+//     return view('admin.admin');
+// })->middleware(['auth', 'verified','rolemanager:admin'])->name('admin');
+
 
 
 // Route::get('/vendor/dashboard', function () {
 //     return view('vendor.vendor');
 // })->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
+
+
+Route::get('/admin/dashboard',[RatingController::class, 'admin'])->middleware(['auth', 'verified','rolemanager:admin'])->name('admin');
+
+
+
 
 
 Route::get('/register-court', function () {
@@ -58,3 +65,15 @@ Route::get('users/court_details/{id}',[CourtController::class, 'showdetails'])->
 // vendor routes
 
 Route::get('vendor/view-food-court',[CourtController::class,'vendor_courts'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.view-food-court'); 
+
+
+// vendor  edit routes
+
+Route::get('vendor/food-court-edit/{id}',[CourtController::class,'edit_food_courts'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.food-court-edit');
+
+
+Route::post('vendor/update-food-court/{id}',[CourtController::class,'update_food_courts'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.update-food-court');
+
+
+Route::post('user/rating',[RatingController::class,'store'])->middleware(['auth', 'verified','rolemanager:user'])->name('rating');
+

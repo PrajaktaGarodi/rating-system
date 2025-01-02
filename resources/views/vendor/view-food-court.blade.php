@@ -7,6 +7,11 @@
 
 <div class="row">
     <div class="col-md-12">
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-striped">
             <thead>
@@ -34,7 +39,7 @@
                         <td>{{ $court->open_time }}</td>
                         <td>{{ $court->close_time }}</td>
                         <td>
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <a href="{{ route('vendor.food-court-edit',$court->id) }}"><i class="fas fa-edit"></i></a>
                             <a href=""><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>

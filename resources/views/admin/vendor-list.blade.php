@@ -34,8 +34,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
 
-                                <td><a href="{{route('admin.vendor-delete',$user->id)}}"><i class="fa-solid p-2 fa-trash text-danger"></i></a><a href=""><i
-                                        class="fa-solid fa-pen-to-square p-2"></i></a></td>
+                                <td><a href="{{route('admin.vendor-delete',$user->id)}}"><i class="fa-solid p-2 fa-trash text-danger"></i></a></a></td>
                             </tr>
                         @endforeach
                     </tbody>
