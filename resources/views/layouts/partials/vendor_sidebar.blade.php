@@ -17,7 +17,7 @@
                 View Food Court
             </a>
 
-            <a class="nav-link" href="{{ url('vendor/dashboard') }}">
+            <a class="nav-link" href="{{route('vendor.food-court-rating') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 View Rating
             </a>

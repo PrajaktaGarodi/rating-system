@@ -67,6 +67,11 @@ Route::get('users/court_details/{id}',[CourtController::class, 'showdetails'])->
 Route::get('vendor/view-food-court',[CourtController::class,'vendor_courts'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.view-food-court'); 
 
 
+// vendor food court rating
+
+Route::get('vendor/food-court-rating',[RatingController::class,'vendor_rating'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.food-court-rating');
+
+
 // vendor  edit routes
 
 Route::get('vendor/food-court-edit/{id}',[CourtController::class,'edit_food_courts'])->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor.food-court-edit');

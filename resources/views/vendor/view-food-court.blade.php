@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="mt-4">Foood Courts</h1>
+<h1 class="mt-4">Food Courts</h1>
 
 
 <div class="row">
@@ -40,7 +40,7 @@
                         <td>{{ $court->close_time }}</td>
                         <td>
                             <a href="{{ route('vendor.food-court-edit',$court->id) }}"><i class="fas fa-edit"></i></a>
-                            <a href=""><i class="fas fa-trash"></i></a>
+                           
                         </td>
                     </tr>
                 @endforeach

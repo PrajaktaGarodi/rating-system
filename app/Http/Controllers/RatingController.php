@@ -34,10 +34,12 @@ class RatingController extends Controller
 
         $court_data = Court::all();
         $user_data = user::all();
+
+        $rating_count = Rating::where('user_id', $user_id)->count();
         
         $ratings = Rating::where('user_id', $user_id)->whereDate('created_at', now()->setTimeZone('Asia/Kolkata'))->get();
 
-        return view('user.dashboard', compact('ratings', 'court_data', 'user_data'));
+        return view('user.dashboard', compact('ratings', 'court_data', 'user_data' , 'rating_count'));
     }
 
 
@@ -63,6 +65,19 @@ class RatingController extends Controller
         $court_data = Court::all();
         $user_data = user::all();
         return view('admin.rating', compact('ratings', 'court_data', 'user_data'));
+    }
+
+
+    public function vendor_rating()
+    {
+        $user_id = Auth::user()->id;
+        $ratings = Rating::where('vendor_id', $user_id)->orderBy('created_at','desc')->get();
+        $court_data = Court::all();
+
+        $user_data = user::all() ;
+
+
+        return view('vendor.vendor-rating', compact('ratings', 'court_data','user_data'));
     }
     
 }

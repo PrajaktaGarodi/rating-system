@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Court;
 use App\Models\User;
-
+use App\Models\Rating;
 class CourtController extends Controller
 {
     public function list()
     {
 
-        $data = Court::get();
-        // return "court";
-        return view('vendor.vendor', compact('data'));
+       $user_id = Auth::user()->id;
+         $court = Court::where('vendor_id', $user_id)->count();
+         $rating = Rating::where('vendor_id', $user_id)->count();
+        return view('vendor.vendor', compact('court','rating'));
     }
 
     public function create()
@@ -43,7 +44,7 @@ class CourtController extends Controller
     //     $image->save();
     //     court::create($request->all());
     //     return redirect()->route('vendor')->with('success', 'Court created successfully.');
-        
+
     //     //$foodCourtImagePath = $request->file('image')->store('images', 'public');
     //     // if ($request->hasFile('image')) {
     //     // }
@@ -55,45 +56,45 @@ class CourtController extends Controller
 
     // }
 
-    
+
 
 
 
     public function store(Request $request)
-{
-    // // Validate the request
-    // $request->validate([
-    //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    //     // Add other validation rules for fields if necessary
-    //     'name' => 'required|string|max:255', // Example for other fields
-    // ]);
+    {
+        // // Validate the request
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     // Add other validation rules for fields if necessary
+        //     'name' => 'required|string|max:255', // Example for other fields
+        // ]);
 
-    // Handle the image upload
-    if ($file = $request->file('image')) {
-        $path = $file->store('images', 'public');
-        $pathArray = explode('/', $path);
-        $imgPath = $pathArray[1]; // This gives just the filename (e.g., "file.jpg")
-    } else {
-        return back()->withErrors(['image' => 'Failed to upload the image.']);
+        // Handle the image upload
+        if ($file = $request->file('image')) {
+            $path = $file->store('images', 'public');
+            $pathArray = explode('/', $path);
+            $imgPath = $pathArray[1]; // This gives just the filename (e.g., "file.jpg")
+        } else {
+            return back()->withErrors(['image' => 'Failed to upload the image.']);
+        }
+
+        // Save the data to the database
+        $court = new Court();
+        $court->court_name = $request->input('court_name'); // Assign other fields explicitly
+        $court->vendor_id = auth()->user()->id; // Assuming you have a "vendor_id" field in your Court model
+        $court->address = $request->input('address');
+        $court->contact = $request->input('contact');
+        $court->email = $request->input('email');
+        $court->food_type = $request->input('food_type');
+        $court->open_time = $request->input('open_time');
+        $court->close_time = $request->input('close_time');
+
+        $court->image = $imgPath;
+        $court->save();
+
+        // Redirect with success message
+        return redirect()->route('vendor.view-food-court')->with('success', 'Court created successfully.');
     }
-
-    // Save the data to the database
-    $court = new Court();
-    $court->court_name = $request->input('court_name'); // Assign other fields explicitly
-    $court->vendor_id = auth()->user()->id; // Assuming you have a "vendor_id" field in your Court model
-    $court->address = $request->input('address');
-    $court->contact = $request->input('contact');
-    $court->email = $request->input('email');
-    $court->food_type = $request->input('food_type');
-    $court->open_time = $request->input('open_time');
-    $court->close_time = $request->input('close_time');
-    
-    $court->image = $imgPath;
-    $court->save();
-
-    // Redirect with success message
-    return redirect()->route('vendor')->with('success', 'Court created successfully.');
-}
 
     public function showcourt()
     {
@@ -107,14 +108,15 @@ class CourtController extends Controller
     public function admin_courts()
     {
         $courts = Court::get();
-        $vendor = User::where('role', 1)->get(); 
+        $vendor = User::where('role', 1)->get();
 
-        return view('admin.food-court', compact('courts','vendor'));
+        return view('admin.food-court', compact('courts', 'vendor'));
     }
 
 
-    public function showdetails($id){
-        
+    public function showdetails($id)
+    {
+
         $court = Court::find($id);
         return view('user.court-details', compact('court'));
     }
