@@ -80,4 +80,18 @@ class RatingController extends Controller
         return view('vendor.vendor-rating', compact('ratings', 'court_data','user_data'));
     }
     
+    public function rating()
+    {
+        $user_id = Auth::user()->id;
+
+        $court_data = Court::all();
+        $user_data = user::all();
+
+        
+        $ratings = Rating::where('user_id', $user_id)->get();
+        
+        return view('user.rating', compact('ratings', 'court_data', 'user_data'));
+
+    }
+
 }

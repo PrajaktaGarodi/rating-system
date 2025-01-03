@@ -12,7 +12,7 @@
                 View Food Court
             </a>
 
-            <a class="nav-link" href="{{ url('/dashboard') }}">
+            <a class="nav-link" href="{{ route('user.rating') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Your Ratings
             </a>
